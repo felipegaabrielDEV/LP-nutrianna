@@ -3,60 +3,167 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Jornada de Emagrecimento com a nutricionista Anna Waleska.">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description"
+        content="Jornada de Emagrecimento com a nutricionista Anna Waleska: acompanhamento personalizado, sem restrições ou radicalismos.">
     <title>Nutri Anna Waleska | Jornada de Emagrecimento</title>
+    <link rel="icon" href="assets/submarca-anna.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260828-01">
+  <link rel="stylesheet" href="google-reviews.css">
 </head>
 
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
     <header id="siteHeader">
-        <div class="container header-inner"><a class="brand" href="#inicio"><img src="assets/logo-anna.jpg"
-                    alt="Logo Anna Waleska"><span><strong>Anna Waleska</strong><small>Nutricionista</small></span></a>
-            <nav class="desktop-nav"><a href="#metodo">Método</a><a href="#publico">Para quem é</a><a
-                    href="#jornada">Jornada</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a
-                    href="#faq">FAQ</a></nav><a class="btn btn-header" data-wa><i></i>Agendar consulta</a><button
-                id="menuToggle" class="menu-toggle" aria-label="Abrir menu"
+        <div class="container header-inner"><a class="brand" href="#inicio"><img src="assets/submarca-anna.webp"
+                    alt="Submarca Anna Waleska"><span><strong>Anna
+                        Waleska</strong><small>Nutricionista</small></span></a>
+            <nav class="desktop-nav" aria-label="Navegação principal"><a href="#metodo">Método</a><a
+                    href="#publico">Para quem é</a><a href="#jornada">Jornada</a><a href="#resultados">Resultados</a><a
+                    href="#sobre">Sobre</a><a href="#faq">FAQ</a></nav><a class="btn btn-header" data-wa><i></i>Toque
+                para saber mais</a><button id="menuToggle" class="menu-toggle" aria-label="Abrir menu"
                 aria-expanded="false"><span></span><span></span></button>
         </div>
-        <nav id="mobileNav" class="mobile-nav"><a href="#metodo">Método</a><a href="#publico">Para quem é</a><a
-                href="#jornada">Jornada</a><a href="#resultados">Resultados</a><a href="#sobre">Sobre</a><a
-                href="#faq">FAQ</a><a class="btn" data-wa><i></i>Agendar consulta</a></nav>
     </header>
+    <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel"><a href="#metodo">Método</a><a
+            href="#publico">Para quem é</a><a href="#jornada">Jornada</a><a href="#resultados">Resultados</a><a
+            href="#sobre">Sobre</a><a href="#faq">FAQ</a><a class="btn" data-wa><i></i>Toque para saber mais</a>
+    </nav>
+    <div class="nav-backdrop" id="navBackdrop"></div>
     <main>
         <section class="hero section" id="inicio">
             <div class="container hero-grid">
-                <div class="reveal"><span class="eyebrow">Nutrição sem extremismos</span>
-                    <h1>Conquiste o corpo dos seus sonhos <em>sem restrições ou radicalismos.</em></h1>
+                <div class="hero-copy reveal"><span class="eyebrow">Nutrição sem extremismos</span>
+                    <h1><span class="title-block"><span class="title-line">Conquiste o corpo</span><span
+                                class="title-line">dos seus sonhos</span></span><em class="title-block"><span
+                                class="title-line">sem restrições ou</span><span
+                                class="title-line">radicalismos.</span></em></h1>
                     <p class="lead">Alcance seus objetivos <strong>sem passar fome</strong> ou recorrer a
                         <strong>remédios milagrosos</strong>, com uma alimentação que não parece uma dieta.</p>
-                    <div class="actions"><a class="btn" data-wa><i></i>Comece a sua jornada</a><a class="text-link"
-                            href="#metodo">Conheça o método ↓</a></div>
-                    <div class="benefits"><span>✓ Plano personalizado</span><span>✓ Bioimpedância</span><span>✓ Suporte
-                            por 60 dias</span><span>✓ Comunidade</span></div>
+                    <div class="actions"><a class="btn btn-wide" data-wa><i></i>Toque para saber mais</a></div>
                 </div>
-                <div class="hero-media reveal"><img src="assets/anna-hero.jpg" alt="Nutricionista Anna Waleska">
-                    <aside><strong>+850</strong><small>pessoas transformadas</small></aside>
+                <div class="hero-media reveal"><img src="assets/anna-hero-2026.webp" alt="Nutricionista Anna Waleska">
+                    <div class="professional-tag"><strong>Nutri. Anna Waleska</strong><span>Esp. em Emagrecimento</span>
+                    </div>
+                    <div class="hero-stats">
+                        <aside><strong>+2.987</strong><small>pessoas transformadas</small></aside>
+                        <aside><strong>+10</strong><small>anos de atuação</small></aside>
+                    </div>
                 </div>
+            </div>
+            <div class="container benefit-strip reveal">
+                <article><span class="benefit-icon"><img src="assets/icone-plano.png" alt=""></span>
+                    <div><strong>Plano personalizado</strong><small>Feito para sua rotina</small></div>
+                </article>
+                <article><span class="benefit-icon"><img src="assets/icone-bioimpedancia.png" alt=""></span>
+                    <div><strong>Bioimpedância</strong><small>Avaliação completa</small></div>
+                </article>
+                <article><span class="benefit-icon"><img src="assets/icone-suporte.png" alt=""></span>
+                    <div><strong>Suporte próximo</strong><small>Acompanhamento contínuo</small></div>
+                </article>
+                <article><span class="benefit-icon"><img src="assets/icone-comunidade.png" alt=""></span>
+                    <div><strong>Comunidade</strong><small>Motivação e acolhimento</small></div>
+                </article>
             </div>
         </section>
         <section class="section soft" id="metodo">
-            <div class="container split">
-                <figure class="photo reveal"><img src="assets/anna-metodo.jpg" alt="Anna Waleska em atendimento"
-                        loading="lazy"></figure>
+            <div class="container split method-grid">
+                <div class="stories-media method-gallery reveal">
+                    <div class="patient-slides"><img class="active" src="assets/anna-metodo-2026.webp"
+                            alt="Anna Waleska em seu consultório" loading="lazy"><img src="assets/pacientes-01.webp"
+                            alt="Anna Waleska com pacientes acompanhadas" loading="lazy"><img
+                            src="assets/pacientes-02.webp" alt="Registros de Anna Waleska com suas pacientes"
+                            loading="lazy"><img src="assets/pacientes-03.webp"
+                            alt="Pacientes atendidas por Anna Waleska" loading="lazy"></div>
+                    <div class="patient-slide-controls"><button class="active" aria-label="Foto 1"></button><button
+                            aria-label="Foto 2"></button><button aria-label="Foto 3"></button><button
+                            aria-label="Foto 4"></button></div>
+                </div>
                 <div class="copy reveal"><span class="eyebrow">Um método que cabe na sua vida</span>
                     <h2>Como meu Método de Emagrecimento funciona?</h2>
                     <p>Eu ouço sua história, identifico dificuldades e construo estratégias personalizadas com alimentos
                         acessíveis. O objetivo é uma rotina prazerosa, possível e duradoura.</p>
                     <p>Você não precisa abandonar tudo o que gosta para alcançar seus resultados.</p>
                     <blockquote>“Já imaginou alcançar seu objetivo sem abrir mão daquele docinho tão adorado?”
-                    </blockquote><a class="btn" data-wa><i></i>Comece a sua jornada</a>
+                    </blockquote><a class="btn btn-expand" data-wa><i></i>Toque para saber mais</a>
                 </div>
+            </div>
+        </section>
+        <section class="section results" id="resultados">
+            <div class="container">
+                <div class="heading centered reveal"><span class="eyebrow">Resultados reais</span>
+                    <h2>Transformações de pacientes da Jornada</h2>
+                    <p>Deslize para o lado, use as setas ou toque na imagem para ampliar.</p>
+                </div>
+                <div class="carousel reveal"><button class="arrow prev" aria-label="Resultado anterior">←</button>
+                    <div class="viewport" id="resultsViewport" tabindex="0">
+                        <div class="track" id="resultsTrack">
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-01.png"><img
+                                        src="assets/resultado-final-01.png" alt="Resultado 1, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 01</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-02.png"><img
+                                        src="assets/resultado-final-02.png" alt="Resultado 2, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 02</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-03.png"><img
+                                        src="assets/resultado-final-03.png" alt="Resultado 3, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 03</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-04.png"><img
+                                        src="assets/resultado-final-04.png" alt="Resultado 4, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 04</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-05.png"><img
+                                        src="assets/resultado-final-05.png" alt="Resultado 5, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 05</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-06.png"><img
+                                        src="assets/resultado-final-06.png" alt="Resultado 6, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 06</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-07.png"><img
+                                        src="assets/resultado-final-07.png" alt="Resultado 7, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 07</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-08.png"><img
+                                        src="assets/resultado-final-08.png" alt="Resultado 8, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 08</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-09.png"><img
+                                        src="assets/resultado-final-09.png" alt="Resultado 9, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 09</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-10.png"><img
+                                        src="assets/resultado-final-10.png" alt="Resultado 10, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 10</figcaption>
+                            </figure>
+                            <figure><button class="image-button" data-lightbox="assets/resultado-final-11.png"><img
+                                        src="assets/resultado-final-11.png" alt="Resultado 11, antes e depois"
+                                        loading="lazy"></button>
+                                <figcaption>Resultado real • 11</figcaption>
+                            </figure>
+                        </div>
+                    </div><button class="arrow next" aria-label="Próximo resultado">→</button>
+                </div>
+                <div class="status"><span id="resultsCounter"></span>
+                    <div id="resultsDots"></div>
+                </div>
+                <p class="note">Resultados individuais variam conforme rotina, adesão e condições de saúde.</p>
             </div>
         </section>
         <section class="section" id="publico">
@@ -64,7 +171,7 @@
                 <div class="heading centered reveal"><span class="eyebrow">Para você que já tentou de tudo</span>
                     <h2>Para quem é a Jornada de Emagrecimento?</h2>
                 </div>
-                <div class="cards">
+                <div class="cards reveal">
                     <article><b>01</b>
                         <h3>Voltar a gostar do espelho</h3>
                         <p>Recupere a confiança e sinta-se bem com o próprio corpo.</p>
@@ -91,110 +198,90 @@
                     <p>Um processo pensado para entender sua rotina, acompanhar sua evolução e tornar o resultado
                         sustentável.</p>
                 </div>
-                <div class="timeline">
-                    <article><b>01</b>
-                        <div>
+                <div class="timeline reveal">
+                    <article><img src="assets/jornada-01.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>01</b>
                             <h3>Pré-consulta</h3>
                             <p>Questionário para reunir informações essenciais.</p>
                         </div>
                     </article>
-                    <article><b>02</b>
-                        <div>
+                    <article><img src="assets/jornada-02.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>02</b>
                             <h3>Consulta clínica</h3>
                             <p>Avaliação da sua história, hábitos e objetivos.</p>
                         </div>
                     </article>
-                    <article><b>03</b>
-                        <div>
+                    <article><img src="assets/jornada-03.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>03</b>
                             <h3>Bioimpedância</h3>
                             <p>Análise da composição corporal e medidas.</p>
                         </div>
                     </article>
-                    <article><b>04</b>
-                        <div>
+                    <article><img src="assets/jornada-04.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>04</b>
                             <h3>Planejamento alimentar</h3>
                             <p>Plano com opções, substituições e receitas.</p>
                         </div>
                     </article>
-                    <article><b>05</b>
-                        <div>
+                    <article><img src="assets/jornada-05.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>05</b>
                             <h3>Comunidade</h3>
                             <p>Motivação, troca de experiências e apoio.</p>
                         </div>
                     </article>
-                    <article><b>06</b>
-                        <div>
+                    <article><img src="assets/jornada-06.jpg" alt="Nutricionista Anna Waleska" loading="lazy">
+                        <div class="timeline-card-copy"><b>06</b>
                             <h3>Suporte da Nutri</h3>
                             <p>Acompanhamento durante toda a jornada.</p>
                         </div>
                     </article>
                 </div>
-                <div class="centered"><a class="btn light-btn" data-wa><i></i>Quero começar minha jornada</a></div>
-            </div>
-        </section>
-        <section class="section results" id="resultados">
-            <div class="container">
-                <div class="heading centered reveal"><span class="eyebrow">Resultados reais</span>
-                    <h2>Transformações de pacientes da Jornada</h2>
-                    <p>Arraste para o lado ou use as setas.</p>
-                </div>
-                <div class="carousel reveal"><button class="arrow prev" aria-label="Anterior">←</button>
-                    <div class="viewport" id="viewport" tabindex="0">
-                        <div class="track" id="track">
-                            <figure><img src="assets/resultado-01.jpg" alt="Resultado 1, antes e depois">
-                                <figcaption>Resultado real • 01</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-02.jpg" alt="Resultado 2, antes e depois">
-                                <figcaption>Resultado real • 02</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-03.jpg" alt="Resultado 3, antes e depois">
-                                <figcaption>Resultado real • 03</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-04.jpg" alt="Resultado 4, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 04</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-05.jpg" alt="Resultado 5, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 05</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-06.png" alt="Resultado 6, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 06</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-07.jpg" alt="Resultado 7, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 07</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-08.jpg" alt="Resultado 8, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 08</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-09.jpg" alt="Resultado 9, antes e depois" loading="lazy">
-                                <figcaption>Resultado real • 09</figcaption>
-                            </figure>
-                            <figure><img src="assets/resultado-10.jpg" alt="Resultado 10, antes e depois"
-                                    loading="lazy">
-                                <figcaption>Resultado real • 10</figcaption>
-                            </figure>
-                        </div>
-                    </div><button class="arrow next" aria-label="Próximo">→</button>
-                </div>
-                <div class="status"><span id="counter"></span>
-                    <div id="dots"></div>
-                </div>
-                <p class="note">Resultados individuais variam conforme rotina, adesão e condições de saúde.</p>
+                <div class="centered"><a class="btn light-btn" data-wa><i></i>Toque para saber mais</a></div>
             </div>
         </section>
         <section class="section soft" id="sobre">
             <div class="container split">
-                <figure class="photo portrait reveal"><img src="assets/anna-sobre.jpg" alt="Nutricionista Anna Waleska"
-                        loading="lazy"></figure>
+                <figure class="photo portrait reveal"><img src="assets/anna-sobre-2026.webp"
+                        alt="Nutricionista Anna Waleska" loading="lazy"></figure>
                 <div class="copy reveal"><span class="eyebrow">Quem vai caminhar com você</span>
                     <h2>Quem é a Nutri Anna Waleska?</h2>
-                    <p>Desde os 14 anos, Anna convive com diabetes tipo 1. Sua experiência com autocuidado e alimentação
-                        despertou o desejo de ajudar outras mulheres.</p>
-                    <p>Hoje, promove uma nutrição livre de extremismos, com acolhimento, estratégia e respeito à rotina.
-                    </p>
+                    <p>Anna Waleska convive com diabetes tipo 1 desde os 14 anos. Foi buscando compreender melhor o
+                        próprio corpo e sua alimentação que encontrou na Nutrição um novo caminho — e, ao longo dessa
+                        jornada, se apaixonou pelo universo do emagrecimento.</p>
+                    <p><strong>Há mais de 10 anos</strong>, transforma conhecimento técnico e experiência pessoal em um
+                        acompanhamento baseado em estratégia, empatia e acolhimento, ajudando mulheres a emagrecerem sem
+                        extremismos e respeitando suas rotinas.</p>
+                    <p>Hoje, além de nutricionista, é fundadora da <strong>VALLENCI Saúde Integrada</strong>, clínica
+                        criada para ampliar esse propósito e transformar ainda mais vidas através de um cuidado próximo
+                        e humanizado.</p>
                     <div class="authority">
-                        <div><strong>+850</strong><small>pessoas transformadas</small></div>
+                        <div><strong>+2.987</strong><small>pessoas transformadas</small></div>
+                        <div><strong>+10 anos</strong><small>de atuação profissional</small></div>
+                        <div><strong>Especialista</strong><small>em Emagrecimento</small></div>
                         <div><strong>Pós-graduada</strong><small>Nutrição estética, esportiva e clínica</small></div>
-                    </div><a class="btn" data-wa><i></i>Quero ser acompanhada pela Anna</a>
+                    </div><a class="btn btn-expand" data-wa><i></i>Toque para saber mais</a>
+                </div>
+            </div>
+        </section>
+        <section class="section clinic">
+            <div class="container clinic-grid">
+                <div class="copy reveal"><span class="eyebrow">Atendimento presencial</span>
+                    <h2>Um espaço preparado para acolher você</h2>
+                    <p>Uma clínica com Consultórios confortáveis e estruturados para uma avaliação próxima, cuidadosa e completa.</p><a
+                        class="btn btn-expand" data-wa><i></i>Toque para saber mais</a>
+                </div>
+                <figure class="reveal"><img src="assets/clinica-vallenci-panoramica.webp"
+                        alt="Ambientes da clínica VALLENCI Saúde Integrada, onde Anna Waleska realiza seus atendimentos" loading="lazy"></figure>
+            </div>
+        </section>
+        <section class="google-reviews" id="avaliacoes">
+            <div class="google-reviews__container">
+                <div class="google-reviews__frame">
+                    <div class="google-reviews__widget">
+                        <!-- Elfsight Google Reviews -->
+                        <script src="https://elfsightcdn.com/platform.js" async></script>
+                        <div class="elfsight-app-0c9640c9-1d4e-4c11-90c9-83bc3ffcbd74" data-elfsight-app-lazy></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -204,18 +291,22 @@
                     <h2>Perguntas frequentes</h2>
                 </div>
                 <div>
-                    <article class="faq-item"><button><span>Como funciona a consulta?</span><b>+</b></button>
+                    <article class="faq-item"><button aria-expanded="false"><span>Como funciona a
+                                consulta?</span><b>+</b></button>
                         <p>A consulta inclui avaliação da história clínica, hábitos, objetivos e construção conjunta de
                             um plano personalizado.</p>
                     </article>
-                    <article class="faq-item"><button><span>O plano alimentar é personalizado?</span><b>+</b></button>
+                    <article class="faq-item"><button aria-expanded="false"><span>O plano alimentar é
+                                personalizado?</span><b>+</b></button>
                         <p>Sim. O planejamento considera sua rotina, preferências, necessidades e objetivos.</p>
                     </article>
-                    <article class="faq-item"><button><span>Preciso cortar tudo o que gosto?</span><b>+</b></button>
+                    <article class="faq-item"><button aria-expanded="false"><span>Preciso cortar tudo o que
+                                gosto?</span><b>+</b></button>
                         <p>Não. A proposta é construir equilíbrio e autonomia, sem radicalismos.</p>
                     </article>
-                    <article class="faq-item"><button><span>Como funciona o suporte?</span><b>+</b></button>
-                        <p>Você terá acompanhamento para dúvidas, ajustes e orientação durante 60 dias.</p>
+                    <article class="faq-item"><button aria-expanded="false"><span>Como funciona o
+                                suporte?</span><b>+</b></button>
+                        <p>Você terá acompanhamento para dúvidas, ajustes e orientação durante toda a jornada.</p>
                     </article>
                 </div>
             </div>
@@ -223,19 +314,69 @@
         <section class="section final">
             <div class="container"><span class="eyebrow light">Seu próximo passo começa agora</span>
                 <h2>Pronta para transformar sua relação com a alimentação?</h2>
-                <p>Converse com a Anna e descubra como começar.</p><a class="btn light-btn" data-wa><i></i>Falar com a
-                    Anna no WhatsApp</a>
+                <p>Converse com a Anna e descubra como começar.</p><a class="btn light-btn" data-wa><i></i>Toque para
+                    saber mais</a>
             </div>
         </section>
-    </main>
-    <a class="floating" data-wa aria-label="WhatsApp"><i></i></a>
-    <footer>
-        <div class="container footer"><a class="brand" href="#inicio"><img src="assets/logo-anna.jpg"
-                    alt=""><span><strong>Anna Waleska</strong><small>Nutricionista</small></span></a>
-            <p>© <span id="year"></span> Anna Waleska.</p>
+
+</main>
+    <dialog class="lightbox" id="lightbox"><button class="lightbox-close" aria-label="Fechar imagem">×</button><img
+            src="" alt="Resultado ampliado"></dialog><a class="floating" data-wa
+        aria-label="Conversar pelo WhatsApp"><i></i></a>
+    <footer class="site-footer">
+        <div class="container footer-main">
+            <div class="footer-brand"><a class="brand" href="#inicio"><img src="assets/submarca-anna.webp"
+                        alt="Anna Waleska"><span><strong>Anna Waleska</strong><small>Nutricionista</small></span></a>
+                <p>Nutrição sem extremismos. Acompanhamento próximo, estratégico e humanizado para uma jornada de
+                    emagrecimento sustentável.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <a href="https://wa.me/5579998645123?text=Ol%C3%A1%2C%20Anna!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Jornada%20de%20Emagrecimento."
+                    target="_blank" rel="noopener noreferrer"><i class="footer-icon footer-icon-wa"
+                        aria-hidden="true"></i><span>(79) 99864-5123</span></a>
+                <a href="https://www.instagram.com/nutriannawaleska/" target="_blank" rel="noopener noreferrer"><svg
+                        class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"></circle>
+                    </svg><span>@nutriannawaleska</span></a>
+            </div>
+            <div class="footer-col">
+                <h4>Localização</h4>
+                <a href="https://maps.app.goo.gl/CMyf3EhANvZWMoPEA" target="_blank" rel="noopener noreferrer"><svg
+                        class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path
+                            d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z">
+                        </path>
+                        <circle cx="12" cy="9.5" r="2.4"></circle>
+                    </svg><span>Av. Dr. José Machado de Souza, 220 - Sala 803<br>Jardins, Aracaju - SE<br>CEP
+                        49025-740</span></a>
+            </div>
+            <div class="footer-col">
+                <h4>Horários</h4>
+                <p><svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4.5" width="18" height="16" rx="3"></rect>
+                        <path d="M3 9.5h18"></path>
+                        <path d="M8 2.5v4M16 2.5v4"></path>
+                    </svg><span>Atendimento somente com hora marcada.</span></p>
+            </div>
+        </div>
+        <div class="container footer-legal">
+            <p>Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do
+                Facebook, a responsabilidade não é deles e sim do nosso site. <strong>Nós não vendemos ou
+                    disponibilizamos o seu e-mail ou qualquer informação para terceiros. Jamais faremos nenhum tipo de
+                    spam.</strong></p>
+        </div>
+        <div class="footer-bottom">
+            <p>© Copyright <span id="year"></span> - Anna Waleska Nutricionista. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=20260828-01"></script>
 </body>
+
 
 </html>
