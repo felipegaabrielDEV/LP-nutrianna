@@ -1,4 +1,4 @@
-const wa = "https://wa.me/5579998645123?text=Ol%C3%A1%2C%20Anna!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Jornada%20de%20Emagrecimento.";
+const wa = "https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/a004cde9-7e33-488c-9e11-f527de87c225";
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.querySelectorAll("[data-wa]").forEach(link => {
