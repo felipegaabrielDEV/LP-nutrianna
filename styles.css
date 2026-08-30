@@ -106,7 +106,7 @@
 .results .track img{width:100%;height:100%;object-fit:cover}
 
 /* Cards "Para quem é": verde oficial, mantendo o efeito visual existente. */
-#publico .cards article{background:var(--green);color:#fff;border-color:#ffffff24;box-shadow:0 12px 30px #37400f1f}#publico .cards article{transition:transform 1s cubic-bezier(.22,.61,.36,1),background 1s ease,box-shadow 1s ease}
+#publico .cards article{background:var(--green);color:#fff;border-color:#ffffff24;box-shadow:0 12px 30px #37400f1f}#publico .cards article{transition:transform 1.8s cubic-bezier(.22,.61,.36,1),background 1.8s ease,box-shadow 1.8s ease}
 #publico .cards article:hover{background:var(--green-dark);box-shadow:0 22px 52px #37400f42}
 #publico .cards h3{color:#fff}
 #publico .cards p{color:#ecebdc}
@@ -176,7 +176,9 @@ header.scrolled .brand img{width:44px;height:44px}
 /* Zoom suave nas fotos da clínica e leve destaque nos ícones de benefício ao passar o mouse */
 /* Zoom removido a pedido — foto da clínica permanece estática no hover */
 .benefit-icon{transition:transform .35s ease}
-.benefit-strip article:hover .benefit-icon{transform:scale(1.08) rotate(-4deg)}
+@media(hover:hover) and (pointer:fine){
+  .benefit-strip article:hover .benefit-icon{transform:scale(1.08) rotate(-4deg)}
+}
 
 /* Respiração sutil na foto do hero, para dar sensação de profundidade */
 @keyframes heroBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
