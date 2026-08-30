@@ -2,7 +2,7 @@
 
 Landing page institucional e comercial desenvolvida para **Anna Waleska**, nutricionista especialista em emagrecimento e fundadora da **VALLENCI Saúde Integrada**. O projeto foi construído do zero como uma página única (*one-page*), focada em apresentar o método de trabalho, gerar autoridade profissional e converter visitantes em contatos qualificados via WhatsApp.
 
-**🔗 Acesse o site publicado:** [felipegaabrieldev.github.io/avalia-o](https://felipegaabrieldev.github.io/avalia-o/)
+**🔗 Acesse o site publicado:** [felipegaabrieldev.github.io/LP-nutrianna] (https://felipegaabrieldev.github.io/LP-nutrianna/)
 
 ![Preview da landing page](assets/anna-hero-2026.webp)
 
@@ -91,7 +91,7 @@ Sem rolagem horizontal, sobreposição de elementos ou conteúdo cortado em nenh
 Por ser um projeto estático, não há necessidade de instalação de dependências:
 
 ```bash
-git clone https://github.com/felipegaabrieldev/avalia-o.git
+git clone https://github.com/felipegaabrieldev/LP-nutrianna.git
 cd avalia-o
 ```
 
