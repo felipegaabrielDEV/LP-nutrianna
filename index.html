@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260828-01">
+    <link rel="stylesheet" href="styles.css?v=20260829-07">
   <link rel="stylesheet" href="google-reviews.css">
 </head>
 
@@ -270,13 +270,30 @@
                     <p>Uma clínica com Consultórios confortáveis e estruturados para uma avaliação próxima, cuidadosa e completa.</p><a
                         class="btn btn-expand" data-wa><i></i>Toque para saber mais</a>
                 </div>
-                <figure class="reveal"><img src="assets/clinica-vallenci-panoramica.webp"
-                        alt="Ambientes da clínica VALLENCI Saúde Integrada, onde Anna Waleska realiza seus atendimentos" loading="lazy"></figure>
+                <div class="clinic-media reveal">
+                    <div class="clinic-slides" id="clinicSlides">
+                        <div class="clinic-slide active" data-type="photo"><img
+                                src="assets/clinica-vallenci-panoramica.webp"
+                                alt="Ambientes da clínica VALLENCI Saúde Integrada, onde Anna Waleska realiza seus atendimentos"
+                                loading="lazy"></div>
+                        <div class="clinic-slide" data-type="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4738.425621709958!2d-37.0604468!3d-10.9456486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71ab3e83e8fe799%3A0xaad3785d71b47b52!2sEdf.%20Neo%20Office%20Jardins%20-%20Av.%20Dr.%20Jos%C3%A9%20Machado%20de%20Souza%2C%20220%20-%20Jardins%2C%20Aracaju%20-%20SE%2C%2049025-740!5e1!3m2!1spt-PT!2sbr!4v1788003687822!5m2!1spt-PT!2sbr"
+                                width="600" height="450" style="border:0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                title="Localização no Google Maps"></iframe>
+                        </div>
+                    </div>
+                    <div class="patient-slide-controls clinic-slide-controls" id="clinicSlideControls">
+                        <button class="active" aria-label="Ver foto da clínica"></button>
+                        <button aria-label="Ver localização no Google Maps"></button>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="google-reviews" id="avaliacoes">
             <div class="google-reviews__container">
-                <div class="google-reviews__frame">
+                <div class="google-reviews__frame reveal">
                     <div class="google-reviews__widget">
                         <!-- Elfsight Google Reviews -->
                         <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -290,23 +307,23 @@
                 <div class="heading reveal"><span class="eyebrow">Tire suas dúvidas</span>
                     <h2>Perguntas frequentes</h2>
                 </div>
-                <div>
+                <div class="faq-list reveal">
                     <article class="faq-item"><button aria-expanded="false"><span>Como funciona a
                                 consulta?</span><b>+</b></button>
-                        <p>A consulta inclui avaliação da história clínica, hábitos, objetivos e construção conjunta de
-                            um plano personalizado.</p>
+                        <div class="faq-answer"><p>A consulta inclui avaliação da história clínica, hábitos, objetivos e construção conjunta de
+                            um plano personalizado.</p></div>
                     </article>
                     <article class="faq-item"><button aria-expanded="false"><span>O plano alimentar é
                                 personalizado?</span><b>+</b></button>
-                        <p>Sim. O planejamento considera sua rotina, preferências, necessidades e objetivos.</p>
+                        <div class="faq-answer"><p>Sim. O planejamento considera sua rotina, preferências, necessidades e objetivos.</p></div>
                     </article>
                     <article class="faq-item"><button aria-expanded="false"><span>Preciso cortar tudo o que
                                 gosto?</span><b>+</b></button>
-                        <p>Não. A proposta é construir equilíbrio e autonomia, sem radicalismos.</p>
+                        <div class="faq-answer"><p>Não. A proposta é construir equilíbrio e autonomia, sem radicalismos.</p></div>
                     </article>
                     <article class="faq-item"><button aria-expanded="false"><span>Como funciona o
                                 suporte?</span><b>+</b></button>
-                        <p>Você terá acompanhamento para dúvidas, ajustes e orientação durante toda a jornada.</p>
+                        <div class="faq-answer"><p>Você terá acompanhamento para dúvidas, ajustes e orientação durante toda a jornada.</p></div>
                     </article>
                 </div>
             </div>
@@ -375,7 +392,7 @@
             <p>© Copyright <span id="year"></span> - Anna Waleska Nutricionista. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="script.js?v=20260828-02"></script>
+    <script src="script.js?v=20260829-01"></script>
 </body>
 
 

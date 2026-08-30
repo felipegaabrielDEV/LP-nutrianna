@@ -122,7 +122,7 @@ lightbox.querySelector(".lightbox-close").addEventListener("click", () => lightb
 lightbox.addEventListener("click", event => { if (event.target === lightbox) lightbox.close(); });
 
 const patientSlides = [...document.querySelectorAll(".patient-slides img")];
-const patientDots = [...document.querySelectorAll(".patient-slide-controls button")];
+const patientDots = [...document.querySelectorAll(".method-gallery .patient-slide-controls button")];
 let patientIndex = 0;
 let patientTimer;
 function showPatientSlide(index) {
@@ -140,6 +140,38 @@ patientDots.forEach((dot, index) => dot.addEventListener("click", () => {
   startPatientAutoplay();
 }));
 startPatientAutoplay();
+
+const clinicSlides = [...document.querySelectorAll(".clinic-slide")];
+const clinicDots = [...document.querySelectorAll(".clinic-slide-controls button")];
+let clinicIndex = 0;
+let clinicTimer;
+let clinicUserPaused = false;
+function showClinicSlide(index) {
+  if (!clinicSlides.length) return;
+  clinicIndex = (index + clinicSlides.length) % clinicSlides.length;
+  clinicSlides.forEach((slide, i) => slide.classList.toggle("active", i === clinicIndex));
+  clinicDots.forEach((dot, i) => dot.classList.toggle("active", i === clinicIndex));
+}
+function startClinicAutoplay() {
+  clearInterval(clinicTimer);
+  if (clinicUserPaused) return;
+  clinicTimer = setInterval(() => showClinicSlide(clinicIndex + 1), reduced ? 7000 : 5200);
+}
+function stopClinicAutoplay() {
+  clearInterval(clinicTimer);
+}
+clinicDots.forEach((dot, index) => dot.addEventListener("click", () => {
+  clinicUserPaused = false;
+  showClinicSlide(index);
+  startClinicAutoplay();
+}));
+const clinicMedia = document.querySelector(".clinic-media");
+if (clinicMedia) {
+  clinicMedia.addEventListener("mouseenter", stopClinicAutoplay);
+  clinicMedia.addEventListener("mouseleave", () => { if (!clinicUserPaused) startClinicAutoplay(); });
+  clinicMedia.addEventListener("touchstart", () => { clinicUserPaused = true; stopClinicAutoplay(); }, { passive: true });
+}
+startClinicAutoplay();
 
 const desktopLinks = [...document.querySelectorAll(".desktop-nav a")];
 if ("IntersectionObserver" in window) {
