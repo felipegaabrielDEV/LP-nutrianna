@@ -2,7 +2,7 @@
 
 Landing page institucional e comercial desenvolvida para **Anna Waleska**, nutricionista especialista em emagrecimento e fundadora da **VALLENCI Saúde Integrada**. O projeto foi construído do zero como uma página única (*one-page*), focada em apresentar o método de trabalho, gerar autoridade profissional e converter visitantes em contatos qualificados via WhatsApp.
 
-**🔗 Acesse o site publicado:** [felipegaabrieldev.github.io/LP-nutrianna] (https://felipegaabrieldev.github.io/LP-nutrianna/)
+**🔗 Acesse o site publicado:** [felipegaabrieldev.github.io/LP-nutrianna] (https://annawaleskanutri.com.br/)
 
 ![Preview da landing page](assets/anna-hero-2026.webp)
 
