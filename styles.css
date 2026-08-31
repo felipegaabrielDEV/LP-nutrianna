@@ -197,3 +197,22 @@ header.scrolled .brand img{width:44px;height:44px}
   .track figure,#jornada .timeline article>img{transition:none}
   #publico .cards article{transition:none}
 }
+
+/* No mobile, os benefícios permanecem estáticos ao toque para não invadir o item seguinte. */
+@media(max-width:720px){
+  .benefit-strip article,
+  .benefit-strip.visible article,
+  .benefit-strip.visible article:hover,
+  .benefit-strip.visible article:active,
+  .benefit-strip.visible article:focus{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+  .benefit-strip article .benefit-icon,
+  .benefit-strip article:hover .benefit-icon,
+  .benefit-strip article:active .benefit-icon{
+    transform:none;
+    transition:none;
+  }
+}
