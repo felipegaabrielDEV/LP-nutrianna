@@ -61,6 +61,7 @@ Projeto **100% estático**, sem frameworks, bundlers ou dependências de build �
 ├── styles.css               # Estilos, layout responsivo e animações
 ├── google-reviews.css        # Estilos específicos do bloco de avaliações
 ├── script.js                # Interações: menu, carrosséis, FAQ, contadores, WhatsApp
+├── tracking.js              # UTMs, eventos do WhatsApp e integração opcional com GA4
 └── assets/                  # Imagens, ícones e fotografias (WebP otimizado)
 ```
 
@@ -102,6 +103,19 @@ Depois, basta abrir o `index.html` no navegador ou servir a pasta com uma extens
 ## 🌐 Deploy
 
 O projeto é publicado automaticamente via **GitHub Pages**, a partir da branch principal do repositório.
+
+### Rastreamento das origens
+
+Use um único site com os links abaixo em cada canal. Os parâmetros UTM identificam a origem da visita e acompanham o evento `whatsapp_click` em todos os botões de contato.
+
+| Origem | Link a utilizar |
+|---|---|
+| Bio do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=organic_social&utm_campaign=lp_nutri_anna&utm_content=bio` |
+| Perfil do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=organic&utm_campaign=lp_nutri_anna&utm_content=business_profile` |
+| Anúncios do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=paid_social&utm_campaign=lp_nutri_anna&utm_content=ad` |
+| Anúncios do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=lp_nutri_anna&utm_content=ad` |
+
+Para ativar o envio ao Google Analytics 4, substitua o conteúdo vazio da meta tag `ga-measurement-id`, no `<head>` do `index.html`, pelo ID da propriedade no formato `G-XXXXXXXXXX`. Sem esse ID, o site continua funcionando normalmente e mantém os eventos preparados no `dataLayer` para uma futura instalação via Google Tag Manager.
 
 ---
 
