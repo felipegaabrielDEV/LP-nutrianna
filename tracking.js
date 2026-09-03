@@ -14,6 +14,7 @@
     pageParameters.get(name) || ""
   ]));
   const analyticsId = document.querySelector('meta[name="ga-measurement-id"]')?.content.trim() || "";
+  const metaPixelId = document.querySelector('meta[name="meta-pixel-id"]')?.content.trim() || "";
   const trackingDataLayer = window.dataLayer = window.dataLayer || [];
 
   function attributionPayload() {
@@ -39,12 +40,41 @@
     window.gtag("config", analyticsId);
   }
 
+  if (/^\d+$/.test(metaPixelId)) {
+    window.fbq = window.fbq || function () {
+      if (window.fbq.callMethod) window.fbq.callMethod.apply(window.fbq, arguments);
+      else window.fbq.queue.push(arguments);
+    };
+    window._fbq = window._fbq || window.fbq;
+    window.fbq.push = window.fbq;
+    window.fbq.loaded = true;
+    window.fbq.version = "2.0";
+    window.fbq.queue = window.fbq.queue || [];
+
+    const metaPixelScript = document.createElement("script");
+    metaPixelScript.async = true;
+    metaPixelScript.src = "https://connect.facebook.net/en_US/fbevents.js";
+    document.head.appendChild(metaPixelScript);
+    window.fbq("init", metaPixelId);
+    window.fbq("track", "PageView");
+  }
+
   trackingDataLayer.push({ event: "landing_page_attribution", ...attributionPayload() });
 
   document.querySelectorAll("[data-wa]").forEach((link, index) => {
-    link.addEventListener("click", () => trackEvent("whatsapp_click", {
-      cta_position: `whatsapp_cta_${index + 1}`,
-      link_url: link.href
-    }));
+    link.addEventListener("click", () => {
+      const eventParameters = {
+        cta_position: `whatsapp_cta_${index + 1}`,
+        link_url: link.href
+      };
+      trackEvent("whatsapp_click", eventParameters);
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Contact", {
+          ...attributionPayload(),
+          content_name: "WhatsApp",
+          cta_position: eventParameters.cta_position
+        });
+      }
+    });
   });
 })();

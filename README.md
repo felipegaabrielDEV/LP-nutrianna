@@ -115,7 +115,9 @@ Use um único site com os links abaixo em cada canal. Os parâmetros UTM identif
 | Anúncios do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=paid_social&utm_campaign=lp_nutri_anna&utm_content=ad` |
 | Anúncios do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=lp_nutri_anna&utm_content=ad` |
 
-Para ativar o envio ao Google Analytics 4, substitua o conteúdo vazio da meta tag `ga-measurement-id`, no `<head>` do `index.html`, pelo ID da propriedade no formato `G-XXXXXXXXXX`. Sem esse ID, o site continua funcionando normalmente e mantém os eventos preparados no `dataLayer` para uma futura instalação via Google Tag Manager.
+O Google Analytics 4 está configurado com o ID `G-J1XX8JWWVC`. O Meta Pixel está configurado com o conjunto de dados `1570300633537408`, registrando `PageView` nas visitas e `Contact` nos cliques do WhatsApp.
+
+O token da API de Conversões da Meta não deve ser incluído neste projeto estático ou no repositório público. Uma futura integração de servidor deve armazená-lo exclusivamente como segredo de ambiente.
 
 ---
 
