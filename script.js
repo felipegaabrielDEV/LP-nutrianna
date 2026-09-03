@@ -1,4 +1,5 @@
-const wa = "https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/a004cde9-7e33-488c-9e11-f527de87c225";
+const waMessage = "Vim do site e gostaria de saber mais sobre as consultas da Nutri Anna Waleska.";
+const wa = `https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/a004cde9-7e33-488c-9e11-f527de87c225?text=${encodeURIComponent(waMessage)}`;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.querySelectorAll("[data-wa]").forEach(link => {
