@@ -15,9 +15,14 @@ const waDefaultLink = waLinks.instagram_bio;
 function resolveWhatsAppOrigin(source, medium) {
   source = (source || "").trim().toLowerCase();
   medium = (medium || "").trim().toLowerCase();
-  if (source === "instagram" && medium === "organic") return "instagram_bio";
-  if (source === "meta" && medium === "paid_social") return "meta_ads";
+  // Reconhecimento flexivel: aceita as variacoes usadas nos anuncios/bio.
+  // Anuncio pago (Meta/Instagram Ads): medium paid_social, source meta ou instagram.
+  if (medium === "paid_social" && (source === "meta" || source === "instagram")) return "meta_ads";
+  // Anuncio do Google (Google Ads).
   if (source === "google" && medium === "cpc") return "google_ads";
+  // Bio do Instagram (organico): medium organic ou organic_social.
+  if (source === "instagram" && (medium === "organic" || medium === "organic_social")) return "instagram_bio";
+  // Perfil do Google (organico).
   if (source === "google" && medium === "organic") return "google_profile";
   return null;
 }
