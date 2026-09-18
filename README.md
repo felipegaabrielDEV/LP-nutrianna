@@ -50,7 +50,7 @@ Projeto **100% estático**, sem frameworks, bundlers ou dependências de build �
 - **JavaScript** vanilla (ES6+), sem bibliotecas externas
 - **[Elfsight](https://elfsight.com/)** — widget de avaliações do Google
 - **Google Maps Embed API** — localização interativa
-- **WhatsApp Business** (`wa.me`) com link rastreável para atribuição de origem de leads
+- **[Tintim](https://tintim.link/)** — links de WhatsApp rastreáveis, com destino trocado por origem (UTM)
 
 ---
 
@@ -61,7 +61,7 @@ Projeto **100% estático**, sem frameworks, bundlers ou dependências de build �
 ├── styles.css               # Estilos, layout responsivo e animações
 ├── google-reviews.css        # Estilos específicos do bloco de avaliações
 ├── script.js                # Interações: menu, carrosséis, FAQ, contadores, WhatsApp
-├── tracking.js              # UTMs, eventos do WhatsApp e integração opcional com GA4
+├── tracking.js              # GA4, Meta Pixel, conversão do Google Ads e captura/uso das UTMs
 └── assets/                  # Imagens, ícones e fotografias (WebP otimizado)
 ```
 
@@ -106,16 +106,44 @@ O projeto é publicado automaticamente via **GitHub Pages**, a partir da branch 
 
 ### Rastreamento das origens
 
-Use um único site com os links abaixo em cada canal. Os parâmetros UTM identificam a origem da visita e acompanham o evento `whatsapp_click` em todos os botões de contato.
+Existe **um único site**. Os parâmetros UTM na URL de entrada identificam a origem da visita e, com base nisso, o site **troca automaticamente o link de destino** de todos os botões de WhatsApp para o link **[Tintim](https://tintim.link/)** correspondente ao canal. O visual, o texto e a posição dos botões não mudam — muda apenas o `href`.
+
+**Fluxo:** entra com UTM → o site identifica a origem → guarda em `sessionStorage` (não se perde ao navegar pela página) → aplica o link Tintim do canal em todos os botões → o clique dispara a conversão do Google Ads → a Tintim registra o acesso → abre o WhatsApp.
+
+#### Links de entrada por canal
+
+Use um destes links em cada canal:
 
 | Origem | Link a utilizar |
 |---|---|
-| Bio do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=organic_social&utm_campaign=lp_nutri_anna&utm_content=bio` |
-| Perfil do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=organic&utm_campaign=lp_nutri_anna&utm_content=business_profile` |
-| Anúncios do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=paid_social&utm_campaign=lp_nutri_anna&utm_content=ad` |
-| Anúncios do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=lp_nutri_anna&utm_content=ad` |
+| Bio do Instagram | `https://annawaleskanutri.com.br/?utm_source=instagram&utm_medium=organic&utm_campaign=bio` |
+| Anúncios do Instagram/Meta | `https://annawaleskanutri.com.br/?utm_source=meta&utm_medium=paid_social&utm_campaign=emagrecimento` |
+| Anúncios do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=cpc&utm_campaign=emagrecimento` |
+| Perfil do Google | `https://annawaleskanutri.com.br/?utm_source=google&utm_medium=organic&utm_campaign=google_business_profile` |
 
-O Google Analytics 4 está configurado com o ID `G-J1XX8JWWVC`. O Meta Pixel está configurado com o conjunto de dados `1570300633537408`, registrando `PageView` nas visitas e `Contact` nos cliques do WhatsApp.
+#### Reconhecimento flexível
+
+Para tolerar variações de marcação usadas nos anúncios, a identificação da origem aceita mais de uma combinação de `utm_source` / `utm_medium`:
+
+| Origem | Regra (source / medium) | Link Tintim de destino |
+|---|---|---|
+| Anúncio pago (Meta/Instagram) | `paid_social` + (`meta` ou `instagram`) | `.../e1b1ae47-2e17-4d43-bfeb-caa40514d977` |
+| Anúncio do Google | `google` + `cpc` | `.../c966b600-39a9-449f-b415-f5b72ebe84c8` |
+| Bio do Instagram | `instagram` + (`organic` ou `organic_social`) | `.../a004cde9-7e33-488c-9e11-f527de87c225` |
+| Perfil do Google | `google` + `organic` | `.../eb5c2031-7893-491a-870c-a4b4841df48f` |
+
+Todos os links compartilham o prefixo `https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/`. **Sem UTM reconhecida** (acesso direto ou canal não mapeado), os botões mantêm o link padrão (Bio do Instagram), garantindo que nenhum botão deixe de funcionar.
+
+#### Ferramentas de análise
+
+| Ferramenta | ID | Função |
+|---|---|---|
+| Google Analytics 4 | `G-J1XX8JWWVC` | `PageView` nas visitas e evento `whatsapp_click` nos cliques |
+| Meta Pixel | `1570300633537408` | `PageView` nas visitas e `Contact` nos cliques do WhatsApp |
+| Google Ads | `AW-16866637598` (rótulo `.../QGNzCPyywrAaEJ7u0eo-`) | Conversão disparada no clique do botão de WhatsApp |
+| Tintim | link por canal (acima) | Atribuição da origem do lead |
+
+Os IDs de GA4, Meta Pixel e Google Ads ficam em tags `<meta>` no `<head>` do `index.html`, o que permite atualizá-los sem mexer no JavaScript. Toda a lógica de tracking está em `tracking.js` (carregamento das tags e disparo dos eventos/conversão) e em `script.js` (leitura das UTMs e troca do link dos botões).
 
 O token da API de Conversões da Meta não deve ser incluído neste projeto estático ou no repositório público. Uma futura integração de servidor deve armazená-lo exclusivamente como segredo de ambiente.
 
