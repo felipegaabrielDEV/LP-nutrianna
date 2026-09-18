@@ -1,5 +1,45 @@
 const waMessage = "Vim do site e gostaria de saber mais sobre as consultas da Nutri Anna Waleska.";
-const wa = `https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/a004cde9-7e33-488c-9e11-f527de87c225?text=${encodeURIComponent(waMessage)}`;
+
+/* Ajuste 02 — a origem do visitante (UTM) define qual link da Tintim os botões
+   de WhatsApp usam. O visual, o texto e a posição dos botões não mudam:
+   muda apenas o destino (href). Sem UTM reconhecida, mantém o link padrão. */
+const tintimBase = "https://tintim.link/whatsapp/dd13be2e-477f-4631-a830-a0a6e9837a21/";
+const waLinks = {
+  instagram_bio: tintimBase + "a004cde9-7e33-488c-9e11-f527de87c225",
+  meta_ads: tintimBase + "e1b1ae47-2e17-4d43-bfeb-caa40514d977",
+  google_ads: tintimBase + "c966b600-39a9-449f-b415-f5b72ebe84c8",
+  google_profile: tintimBase + "eb5c2031-7893-491a-870c-a4b4841df48f"
+};
+const waDefaultLink = waLinks.instagram_bio;
+
+function resolveWhatsAppOrigin(source, medium) {
+  source = (source || "").trim().toLowerCase();
+  medium = (medium || "").trim().toLowerCase();
+  if (source === "instagram" && medium === "organic") return "instagram_bio";
+  if (source === "meta" && medium === "paid_social") return "meta_ads";
+  if (source === "google" && medium === "cpc") return "google_ads";
+  if (source === "google" && medium === "organic") return "google_profile";
+  return null;
+}
+
+function currentWhatsAppOrigin() {
+  const params = new URLSearchParams(location.search);
+  const fromUrl = resolveWhatsAppOrigin(params.get("utm_source"), params.get("utm_medium"));
+  try {
+    if (fromUrl) {
+      sessionStorage.setItem("wa_origin", fromUrl);
+      return fromUrl;
+    }
+    const stored = sessionStorage.getItem("wa_origin");
+    if (stored && waLinks[stored]) return stored;
+  } catch (error) {
+    if (fromUrl) return fromUrl;
+  }
+  return null;
+}
+
+const waOrigin = currentWhatsAppOrigin();
+const wa = `${waOrigin ? waLinks[waOrigin] : waDefaultLink}?text=${encodeURIComponent(waMessage)}`;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.querySelectorAll("[data-wa]").forEach(link => {

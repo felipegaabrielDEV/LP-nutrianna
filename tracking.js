@@ -15,6 +15,8 @@
   ]));
   const analyticsId = document.querySelector('meta[name="ga-measurement-id"]')?.content.trim() || "";
   const metaPixelId = document.querySelector('meta[name="meta-pixel-id"]')?.content.trim() || "";
+  const googleAdsId = document.querySelector('meta[name="google-ads-id"]')?.content.trim() || "";
+  const googleAdsConversionLabel = document.querySelector('meta[name="google-ads-conversion-label"]')?.content.trim() || "";
   const trackingDataLayer = window.dataLayer = window.dataLayer || [];
 
   function attributionPayload() {
@@ -30,14 +32,20 @@
     }
   }
 
-  if (/^G-[A-Z0-9]+$/i.test(analyticsId)) {
+  const hasAnalyticsId = /^G-[A-Z0-9]+$/i.test(analyticsId);
+  const hasGoogleAdsId = /^AW-[A-Z0-9]+$/i.test(googleAdsId);
+  if (hasAnalyticsId || hasGoogleAdsId) {
+    // Carrega uma única vez a tag do Google (gtag.js) e registra nela as contas
+    // existentes: GA4 e/ou Google Ads. Não duplica a tag principal.
+    const primaryGoogleId = hasAnalyticsId ? analyticsId : googleAdsId;
     const analyticsScript = document.createElement("script");
     analyticsScript.async = true;
-    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`;
+    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(primaryGoogleId)}`;
     document.head.appendChild(analyticsScript);
     window.gtag = function () { trackingDataLayer.push(arguments); };
     window.gtag("js", new Date());
-    window.gtag("config", analyticsId);
+    if (hasAnalyticsId) window.gtag("config", analyticsId);
+    if (hasGoogleAdsId) window.gtag("config", googleAdsId);
   }
 
   if (/^\d+$/.test(metaPixelId)) {
@@ -61,12 +69,33 @@
 
   trackingDataLayer.push({ event: "landing_page_attribution", ...attributionPayload() });
 
+  // Ajuste 01 — conversão do Google Ads no clique do WhatsApp.
+  function reportGoogleAdsConversion() {
+    if (typeof window.gtag === "function" && googleAdsConversionLabel) {
+      window.gtag("event", "conversion", {
+        send_to: googleAdsConversionLabel,
+        value: 1.0,
+        currency: "BRL"
+      });
+    }
+  }
+
+  // Disponível para teste manual no Google Tag Assistant. Como os botões abrem
+  // em nova aba (target=_blank), a página atual permanece e o beacon da
+  // conversão é enviado normalmente, sem precisar segurar o redirecionamento.
+  window.gtag_report_conversion = function (url) {
+    reportGoogleAdsConversion();
+    if (typeof url !== "undefined") window.location = url;
+    return false;
+  };
+
   document.querySelectorAll("[data-wa]").forEach((link, index) => {
     link.addEventListener("click", () => {
       const eventParameters = {
         cta_position: `whatsapp_cta_${index + 1}`,
         link_url: link.href
       };
+      reportGoogleAdsConversion();
       trackEvent("whatsapp_click", eventParameters);
       if (typeof window.fbq === "function") {
         window.fbq("track", "Contact", {
