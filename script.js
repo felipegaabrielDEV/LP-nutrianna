@@ -12,24 +12,32 @@ const waLinks = {
 };
 const waDefaultLink = waLinks.instagram_bio;
 
-function resolveWhatsAppOrigin(source, medium) {
+function resolveWhatsAppOrigin(source, medium, gclid, fbclid) {
   source = (source || "").trim().toLowerCase();
   medium = (medium || "").trim().toLowerCase();
-  // Reconhecimento flexivel: aceita as variacoes usadas nos anuncios/bio.
-  // Anuncio pago (Meta/Instagram Ads): medium paid_social, source meta ou instagram.
-  if (medium === "paid_social" && (source === "meta" || source === "instagram")) return "meta_ads";
+  const organic = medium === "organic" || medium === "organic_social";
+  const paid = ["paid_social", "paid", "cpc", "ppc", "paid_search", "social_paid"].includes(medium);
+  // Meta pago: aceita as variacoes de fonte (meta, facebook, fb, ig, instagram, an, msg),
+  // inclusive os valores que o proprio Meta preenche em {{site_source_name}}.
+  const metaSources = ["meta", "facebook", "fb", "ig", "instagram", "an", "msg"];
+  if (metaSources.includes(source) && (paid || (!organic && source !== "instagram"))) return "meta_ads";
   // Anuncio do Google (Google Ads).
-  if (source === "google" && medium === "cpc") return "google_ads";
-  // Bio do Instagram (organico): medium organic ou organic_social.
-  if (source === "instagram" && (medium === "organic" || medium === "organic_social")) return "instagram_bio";
+  if (source === "google" && paid) return "google_ads";
+  // Bio do Instagram (organico).
+  if (source === "instagram" && organic) return "instagram_bio";
   // Perfil do Google (organico).
-  if (source === "google" && medium === "organic") return "google_profile";
+  if (source === "google" && organic) return "google_profile";
+  // Sem UTM reconhecida: o identificador de clique do anuncio decide o canal.
+  if (gclid) return "google_ads";
+  if (fbclid) return "meta_ads";
   return null;
 }
 
 function currentWhatsAppOrigin() {
   const params = new URLSearchParams(location.search);
-  const fromUrl = resolveWhatsAppOrigin(params.get("utm_source"), params.get("utm_medium"));
+  const fromUrl = resolveWhatsAppOrigin(
+    params.get("utm_source"), params.get("utm_medium"), params.get("gclid"), params.get("fbclid")
+  );
   try {
     if (fromUrl) {
       sessionStorage.setItem("wa_origin", fromUrl);

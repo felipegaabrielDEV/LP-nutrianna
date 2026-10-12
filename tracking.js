@@ -13,6 +13,16 @@
     name,
     pageParameters.get(name) || ""
   ]));
+  // Persiste a origem na sessão: se o visitante recarregar ou navegar sem a query,
+  // os eventos seguintes continuam com UTM/gclid/fbclid. Origem nova na URL substitui a guardada.
+  try {
+    if (Object.values(campaignAttribution).some(Boolean)) {
+      sessionStorage.setItem("wa_attribution", JSON.stringify(campaignAttribution));
+    } else {
+      const stored = JSON.parse(sessionStorage.getItem("wa_attribution") || "{}");
+      campaignParameterNames.forEach(name => { if (stored[name]) campaignAttribution[name] = String(stored[name]); });
+    }
+  } catch (error) { /* sem sessionStorage: segue só com a URL atual */ }
   const analyticsId = document.querySelector('meta[name="ga-measurement-id"]')?.content.trim() || "";
   const metaPixelId = document.querySelector('meta[name="meta-pixel-id"]')?.content.trim() || "";
   const googleAdsId = document.querySelector('meta[name="google-ads-id"]')?.content.trim() || "";
@@ -69,13 +79,12 @@
 
   trackingDataLayer.push({ event: "landing_page_attribution", ...attributionPayload() });
 
-  // Ajuste 01 — conversão do Google Ads no clique do WhatsApp.
+  // Ajuste 01 — conversão do Google Ads no clique do WhatsApp (micro-conversão).
+  // Sem value/currency: o clique não tem valor real; o Ads usa o valor configurado na ação.
   function reportGoogleAdsConversion() {
     if (typeof window.gtag === "function" && googleAdsConversionLabel) {
       window.gtag("event", "conversion", {
-        send_to: googleAdsConversionLabel,
-        value: 1.0,
-        currency: "BRL"
+        send_to: googleAdsConversionLabel
       });
     }
   }
